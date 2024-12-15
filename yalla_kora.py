@@ -17,7 +17,8 @@ def main(page):
     def get_match_info(championShip):
         championShip_title = championShip.contents[1].find('h2').text.strip() # this is equal the one below.
         # championShip_title = championShip.find('h2').text.strip()
-        all_matches = championShip
+        all_matches = championShip.contents[3]
+        print(all_matches)
         ...
         # print (championShip_title)
     get_match_info(championShips[0])
