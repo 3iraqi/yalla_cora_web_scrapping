@@ -2,8 +2,8 @@ import requests                          # pip install requests
 from bs4 import BeautifulSoup as Bs             # pip install beautifulsoup # pip install lxml
 import csv                                      
 
-date=input("Enter The date eg. 'MM/dd/yyyy' : -> ")
-# date="12/14/2024"
+# date=input("Enter The date eg. 'MM/dd/yyyy' : -> ")
+date="12/14/2024"
 page = requests.get(f"https://www.yallakora.com/match-center/?date={date}")
 
 def main(page):
@@ -26,7 +26,7 @@ def main(page):
             
             # Get Score
             match_result = all_matches[i].find("div",{'class':'MResult'}).find_all('span',{'class':'score'})
-            score = f"{match_result[0].text.strip()} - {match_result[1].text.strip()}"
+            score = f"({match_result[0].text.strip()} - {match_result[1].text.strip()})"
             
             # Ger Match time 
             match_time = all_matches[i].find('div',{'class':'MResult'}).find('span','time').text.strip()
@@ -35,15 +35,12 @@ def main(page):
             # Add Matches Info to matches_details
             matches_details.append({
                 'Champion Type':championShip_title,
-                'First Team':teamA,
-                'Second Team':teamB,
+                'First Team':teamB,
+                'Second Team':teamA,
                 'Match Time':match_time,
                 'RESULT':score,
                 })
             
-            
-        
-        
     
     for i in range(len(championShips)):
         get_match_info(championShips[i])    
@@ -51,7 +48,7 @@ def main(page):
     # Save to CSV File
     keys=matches_details[0].keys()
     
-    with open('yallaCora/champion_details.csv', 'w' , encoding='utf-8', newline="") as output_file:
+    with open(f'yallaCora/champion_details.csv', 'w' , encoding='utf-8-sig', newline='') as output_file:
         dict_writer   = csv.DictWriter(output_file, keys) 
         dict_writer.writeheader()
         dict_writer.writerows(matches_details)
