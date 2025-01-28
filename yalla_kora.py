@@ -56,8 +56,8 @@ def main(page_):
             matches_details.append(
                 {
                     "Champion Type": champion_ship_title,
-                    "First Team": team_b,
-                    "Second Team": team_a,
+                    "First Team": team_a,
+                    "Second Team": team_b,
                     "Match Time": match_time,
                     "RESULT": score,
                 }
