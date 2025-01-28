@@ -6,8 +6,8 @@ import csv
 import requests  # pip install requests
 from bs4 import BeautifulSoup as Bs  # pip install beautifulsoup # pip install lxml
 
-# date = input("Enter The date eg. 'MM/dd/yyyy' : -> ")
-date="01/28/2024"
+date = input("Enter The date eg. 'MM/dd/yyyy' : -> ") # input date from user
+# date="01/28/2024"
 page = requests.get(f"https://www.yallakora.com/match-center/?date={date}", timeout=20)
 
 
@@ -24,12 +24,12 @@ def main(page_):
     # (str tag, dict filter) here we git the main div to championships
 
     def get_match_info(champion_ship):
-        champion_ship_title = (
-            champion_ship.contents[1].find("h2").text.strip()
-        )  # this is equal the one below.
-        # championShip_title = championShip.find('h2').text.strip()
+        champion_ship_title = champion_ship.contents[1].find("h2").text.strip() 
+      
         all_matches = champion_ship.contents[3].find_all("div", {"class": "liItem"})
+        
         number_of_matches = len(all_matches)
+        
         for i in range(number_of_matches):
             # Get Teams Name
             team_a = all_matches[i].find("div", {"class": "teamA"}).text.strip()
@@ -63,10 +63,9 @@ def main(page_):
                 }
             )
 
-    # for i in range(len(champion_ships)):
-    #     get_match_info(champion_ships[i])
+    
 
-    # Using
+    # get data
     for champion_ship in champion_ships:
         get_match_info(champion_ship)
 
