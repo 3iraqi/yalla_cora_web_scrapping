@@ -1,12 +1,13 @@
 """Web Scraping Task That get the match's data
+
     """
 
 import csv
 import requests  # pip install requests
 from bs4 import BeautifulSoup as Bs  # pip install beautifulsoup # pip install lxml
 
-date = input("Enter The date eg. 'MM/dd/yyyy' : -> ")
-# date="12/14/2024"
+# date = input("Enter The date eg. 'MM/dd/yyyy' : -> ")
+date="01/28/2024"
 page = requests.get(f"https://www.yallakora.com/match-center/?date={date}", timeout=20)
 
 
@@ -82,7 +83,7 @@ def main(page_):
         dict_writer.writerows(matches_details)
         print(" file Created: ")
 
-    # "C:\Users\Mohamed\Desktop"
+    
 
 
 if __name__ == "__main__":
