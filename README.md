@@ -17,3 +17,5 @@
 ## Description
 
 > Developed a Python script using Requests and BeautifulSoup to scrape and save daily match details from YallaCora based on a user-specified date, exporting results into a CSV file.
+
+author: Mohamed Eleraqi
