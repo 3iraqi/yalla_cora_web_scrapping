@@ -6,8 +6,8 @@
 graph TD;
     A[Start] --> B[Input: The date]
     B --> C[Initialize empty list for data]
-    C --> D[Loop through Champions]
-    D -->|For each champion| E[Scrape Match Data]
+    C --> D[Loop through Championships]
+    D -->|For each championship| E[Scrape Match Data]
     E --> F[Store data in list]
     F --> H[Save  Data in CSV File]
     H --> I[End]
